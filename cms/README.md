@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## some commands
+
+## automatic create the component inside app folder
+ng g c name --flat ##this will not create the folder
+ng g c name --flat --spec false will not create the folder and  test file
+ng g c folder/name --spec false create the component inside the folder
+ng g c folder/name --skip-tests
+
+## creating a project with prefix
+
+ng new name --prefix=name --no-strict
+
+

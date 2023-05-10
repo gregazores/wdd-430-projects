@@ -1,9 +1,42 @@
 <div class="row details">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="clearfix panel-heading">
+        <h2>{{ contact?.name }}</h2>
+        <div class="pull-left">
+          <img class="img-responsive" alt="Rex Barzee" [src]="contact?.imageUrl" alt="{{ contact?.name }}" *ngIf="contact?.imageUrl">
+        </div>
+
+        <div class="pull-right btn-toolbar">
+          <button class="btn btn-primary">Edit</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="list-group-item-heading">
+          <p><strong>Email:</strong> {{ contact?.email }}</p>
+        </div>
+
+        <div class="list-group-item-heading">
+          <p><strong>Phone:</strong>{{ contact?.phone }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- old code I want to keep
+
+<div class="row details">
   <div class="panel panel-default">
     <div class="col-xs-12 panel-heading">
       <div class="col-xs-6">
-        <h2 class="heading">Rex Barzee</h2>
-        <img class="img-responsive" alt="Rex Barzee" src="../../assets/images/barzeer.jpg">
+        <h2 class="heading">{{ contact?.name }}</h2>
+        <img class="img-responsive" alt="Rex Barzee" [src]="contact?.imageUrl" alt="{{ contact?.name }}">
       </div>
 
       <div class="col-xs-6 buttons">
@@ -22,3 +55,6 @@
     </div>
   </div>
 </div>
+
+
+-->
