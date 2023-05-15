@@ -7,7 +7,7 @@ import { Message } from '../message.model';
   styleUrls: ['./message-edit.component.css']
 })
 export class MessageEditComponent implements OnInit {
-  currentSender: string = "Greg Azores";
+  currentSender: string = "Gregggy Azores";
   //subjectRef and msgTextRef are local variables of type ElementRef
   @ViewChild('subject', { static: false }) subjectRef: ElementRef;
   @ViewChild('msgText', { static: false }) msgTextRef: ElementRef;

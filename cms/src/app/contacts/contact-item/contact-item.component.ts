@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Contact } from '../contact.model';
 
 @Component({
@@ -11,6 +11,13 @@ export class ContactItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.test2()
+  }
+
+  test2() {
+    console.log("cms-contact-item", this.contact)
+  }
+
 
 }
