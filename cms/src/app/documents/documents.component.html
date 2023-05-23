@@ -2,7 +2,9 @@
   <div class="col-md-5">
     <!-- listen for the onSelectedDocument method from cms-document-list that will be triggered by the click event -->
     <!-- once onSelectedDocument is called assign $event to selectedDocument which is a local variable in DocumentsComponent class -->
-    <cms-document-list (selectedDocumentEvent)="selectedDocument = $event"></cms-document-list>
+    <!-- we will no longer be listening for an event here. We will do that in the DocumentsComponent class instead via ngOnInit -->
+    <!-- <cms-document-list (selectedDocumentEvent)="selectedDocument = $event"></cms-document-list> -->
+    <cms-document-list></cms-document-list>
   </div>
 
   <div class="col-md-4">

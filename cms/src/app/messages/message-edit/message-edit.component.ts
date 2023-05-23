@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, EventEmitter, Output } from '@angular/core';
 import { Message } from '../message.model';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'cms-message-edit',
@@ -7,13 +8,14 @@ import { Message } from '../message.model';
   styleUrls: ['./message-edit.component.css']
 })
 export class MessageEditComponent implements OnInit {
-  currentSender: string = "Gregggy Azores";
+  currentSender: string = "19";
   //subjectRef and msgTextRef are local variables of type ElementRef
   @ViewChild('subject', { static: false }) subjectRef: ElementRef;
   @ViewChild('msgText', { static: false }) msgTextRef: ElementRef;
   @Output() addMessageEvent = new EventEmitter<Message>();
 
-  constructor() {}
+  //we are injecting the MessageService here since we need to send the new message directly there
+  constructor( private messageService: MessageService ) { }
 
   onSendMessage(){
     //Get the value stored in the subject input element
@@ -28,7 +30,11 @@ export class MessageEditComponent implements OnInit {
     const newMessage = new Message("12", subject, msgText, this.currentSender);
 
     //Call the addMessageEvent emitter’s emit() method and pass it the new Message object just created
-    this.addMessageEvent.emit(newMessage);
+    //since we are no longer sending the new message to MessageListComponent class we will comment the code below
+    //this.addMessageEvent.emit(newMessage);
+
+    //instead, we will send the new message to MessageService
+    this.messageService.addMessage(newMessage);
     this.onClear();
   }
 
