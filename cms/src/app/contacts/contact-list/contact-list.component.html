@@ -6,7 +6,7 @@
       </div>
 
       <div class="col-xs-3">
-        <button class="btn btn-success">New Contact</button>
+        <a [routerLink]="['new']" class="btn btn-success">New Contact</a>
       </div>
     </div>
 
@@ -24,11 +24,18 @@
           </a> -->
 
           <!-- The ContactListComponent must pass the current Contact object to the ContactItemComponent as it loops through all of the contacts in the list via parent component -->
-          <cms-contact-item
+          <!-- see documents list component for explanation
+            <cms-contact-item
             *ngFor="let contactEl of contacts"
             [contact]="contactEl"
             (click)="onSelected(contactEl)">
+          </cms-contact-item> -->
+
+          <cms-contact-item
+            *ngFor="let contactEl of contacts"
+            [contact]="contactEl">
           </cms-contact-item>
+
         </div>
       </div>
     </div>

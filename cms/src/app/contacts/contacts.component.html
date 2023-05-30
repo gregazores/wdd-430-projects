@@ -13,7 +13,9 @@
   <div class="col-md-7">
     <!-- notice on this one it is property binding -->
     <!-- this is so that we can assign the value of selectedContact from ContactsComponent class to the 'contact' property of ContactDetailComponent class -->
-    <cms-contact-detail [contact]="selectedContact" *ngIf="selectedContact"></cms-contact-detail>
+    <!-- <cms-contact-detail [contact]="selectedContact" *ngIf="selectedContact"></cms-contact-detail> see document component for explaination -->
     <!-- ngIf directive loads the component only when the value of the selectedContact variable is not null or undefined. -->
+
+    <router-outlet></router-outlet>
   </div>
 </div>

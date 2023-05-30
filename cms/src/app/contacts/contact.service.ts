@@ -9,6 +9,10 @@ export class ContactService {
 
   contactSelectedEvent = new EventEmitter<Contact>();
 
+    //this will emit an event whenever a contact is deleted from contact detail's delete button
+  //and pass an array of documents of Document type
+  contactChangedEvent = new EventEmitter<Contact[]>();
+
   //creating a class variable named contacts whose data type is an array of contact objects.
   //Initialize the variable with an empty array ([])
   contacts: Contact [] = [];
@@ -46,5 +50,21 @@ export class ContactService {
 
     //simple solution using the javascript method find
     return this.contacts.find(( contact ) => contact.id === id );
+   }
+
+   //see documents services for explanation
+   deleteContact(contact: Contact) {
+      if (!contact) {
+        return;
+      }
+
+      const pos = this.contacts.indexOf(contact);
+      if (pos < 0) {
+         return;
+      }
+
+      this.contacts.splice(pos, 1);
+      this.contactChangedEvent.emit(this.contacts.slice());
+
    }
 }

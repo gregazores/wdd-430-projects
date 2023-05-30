@@ -3,6 +3,7 @@ import {Document} from './document.model';
 export const MOCKDOCUMENTS: any[] = [
   {
     id: '1',
+    description: '01 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 425 - Data Warehousing',
     url: 'https://rkjdatawarehousing.wordpress.com/',
     children: [
@@ -50,6 +51,7 @@ export const MOCKDOCUMENTS: any[] = [
   },
   {
     id: '10',
+    description: '10 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 460 - Enterprise Development',
     url: 'https://rkjackson.wordpress.com/',
     children: [
@@ -69,6 +71,7 @@ export const MOCKDOCUMENTS: any[] = [
   },
   {
     id: '20',
+    description: '20 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 366 - Full Web Stack Development',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
     children: [
@@ -101,46 +104,55 @@ export const MOCKDOCUMENTS: any[] = [
   },
   {
     id: '40',
+    description: '40 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 366 - Full Web Stack Development',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },
   {
     id: '41',
+    description: '41 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 240 - Introduction to Networking',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },
   {
     id: '42',
+    description: '42 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 370 - Computer Security I',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },
   {
     id: '43',
+    description: '43 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 360 - Object Oriented Programming II',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },
   {
     id: '44',
+    description: '44 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 470 - Computer Security II',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },
   {
     id: '45',
+    description: '45 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 262 - Mobile Development',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },
   {
     id: '46',
+    description: '46 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 230 - Web Page Development',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },
   {
     id: '47',
+    description: '47 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 236 - Web Development',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },
   {
     id: '48',
+    description: '48 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form',
     name: 'CIT 340 - Networking II',
     url: 'https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf',
   },

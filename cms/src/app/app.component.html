@@ -1,6 +1,17 @@
-<cms-header (selectedFeatureEvent)="switchView($event)"></cms-header>
+
+<cms-header></cms-header>
+<!-- similarly, we will no longer listen for selectedFeatureEvent from the header compononent
+since we will use routing from angular -->
+<!-- <cms-header (selectedFeatureEvent)="switchView($event)"></cms-header> -->
 <div class="container pull-left">
-  <cms-documents *ngIf="selectedFeature === 'documents'"></cms-documents>
+  <!-- this is where anguler will inject the correct view based on the url -->
+  <!-- The <router-outlet> tag indicates the location where each of the main components
+    defined in the app-routing.module.ts file will be loaded and displayed. -->
+  <router-outlet></router-outlet>
+
+  <!-- we will no longer use the method below to change the view when navigation is clicked since we
+  will be using routing from now on -->
+  <!-- <cms-documents *ngIf="selectedFeature === 'documents'"></cms-documents>
   <cms-message-list *ngIf="selectedFeature === 'messages'"></cms-message-list>
-  <cms-contacts *ngIf="selectedFeature === 'contacts'"></cms-contacts>
+  <cms-contacts *ngIf="selectedFeature === 'contacts'"></cms-contacts> -->
 </div>

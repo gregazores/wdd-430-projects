@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cms';
-  selectedFeature: string = "documents";
 
-  switchView(selectedFeature: string) {
-    this.selectedFeature = selectedFeature;
-  }
+  // we will no longer need these since we will be using angular's routing
+  // see app.component.html
+  // selectedFeature: string = "documents";
+  // switchView(selectedFeature: string) {
+  //   this.selectedFeature = selectedFeature;
+  // }
 }

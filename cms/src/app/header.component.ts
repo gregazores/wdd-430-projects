@@ -6,10 +6,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output() selectedFeatureEvent = new EventEmitter<string>();
 
-  onSelected(selectedEvent: string) {
-    this.selectedFeatureEvent.emit(selectedEvent);
-  }
+  // we will no longer need these below for angular routing
+  // @Output() selectedFeatureEvent = new EventEmitter<string>();
+  //selectedEvent is just a string describing which button is clicked -Documents, Messages, Contacts
+  // onSelected(selectedEvent: string) {
+  //   this.selectedFeatureEvent.emit(selectedEvent);
+  // }
 
 }
