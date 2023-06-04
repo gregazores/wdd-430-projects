@@ -71,5 +71,9 @@ export class ContactListComponent implements OnInit {
   //   this.contactService.contactSelectedEvent.emit(contactEl);
   //}
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
 
 }
