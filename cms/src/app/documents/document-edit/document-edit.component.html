@@ -1,1 +1,31 @@
-<p>document-edit works!</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h4 class="title">Edit Document</h4>
+    <form id="document-edit">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" size="120" max="120" #name [value]="document.name">
+        </div>
+
+        <div class="col-sm-12 form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" rows="5" id="description" [value]="document.description" #description></textarea>
+        </div>
+
+        <div class="col-sm-12 form-group">
+          <label for="url">URL</label>
+          <input type="text" id="url" class="form-control" max="255" size="120" [value]="document.url" #url>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success" type="button" (click)="onUpdateDocument()">Edit</button>
+          <button class="btn btn-danger" type="button" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+

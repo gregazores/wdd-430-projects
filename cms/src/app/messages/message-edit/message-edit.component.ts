@@ -10,6 +10,8 @@ import { MessageService } from '../message.service';
 export class MessageEditComponent implements OnInit {
   currentSender: string = "19";
   //subjectRef and msgTextRef are local variables of type ElementRef
+  //@ViewChild allows you to access the element referenced inside @ViewChil's argument here on the HTML template
+  //good thing with @ViewChild the type is ElementRef which gives you access to nativeElement
   @ViewChild('subject', { static: false }) subjectRef: ElementRef;
   @ViewChild('msgText', { static: false }) msgTextRef: ElementRef;
   @Output() addMessageEvent = new EventEmitter<Message>();

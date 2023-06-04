@@ -14,9 +14,10 @@ export class DocumentsComponent implements OnInit {
   constructor( private documentService: DocumentService ) { }
 
   ngOnInit() {
-    this.documentService.documentSelectedEvent.subscribe((documentFromEvent: Document) => {
-      this.selectedDocument = documentFromEvent;
-    });
+    //commenting this out for now since router will handle selection of documents to be displayed in document detail
+    // this.documentService.documentSelectedEvent.subscribe((documentFromEvent: Document) => {
+    //   this.selectedDocument = documentFromEvent;
+    // });
   };
 
 

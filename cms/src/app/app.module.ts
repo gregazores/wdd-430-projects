@@ -23,6 +23,7 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
 
 
 @NgModule({
+  // declarations is for adding components
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -42,7 +43,9 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
     DocumentEditComponent,
     ContactEditComponent
   ],
+  // imports is for adding modules
   imports: [
+    // BrowserModule gives us all the functionality to start our app
     BrowserModule,
     FormsModule,
     AppRoutingModule

@@ -12,12 +12,8 @@ export class DocumentItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.test()
   }
 
-  test() {
-    console.log("cms-document-item", this.document)
-  }
 
 
 

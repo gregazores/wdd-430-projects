@@ -28,14 +28,51 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## some commands
 
+## installing bootstrap
+npm install --save bootstrap@3 => The @3 is important!
+## add Bootstrap to the styles[]add Bootstrap to the styles[]
+don't forget to edit angular.json under the styles part with:
+"node_modules/bootstrap/dist/css/bootstrap.min.css"
+
 ## automatic create the component inside app folder
 ng g c name --flat ##this will not create the folder
 ng g c name --flat --spec false will not create the folder and  test file
 ng g c folder/name --spec false create the component inside the folder
 ng g c folder/name --skip-tests
+ng g c folder/name --skipTests true
 
 ## creating a project with prefix
-
 ng new name --prefix=name --no-strict
 
+## creating a service
+ng g s
 
+## ng serve with port specified
+
+## DATA BINDING
+from ts code to template(HTML) STRING INTERPOLATION {{ data }} (has to resolve to string in the end)
+  OR PROPERTY BINDING [property] = "data"
+from template(HTML) to ts code EVENT BINDING (event) = "expression"
+and then there is two way binding [(ngModel)] = "data"
+
+## LOCAL REFERENCE
+-can be placed to any local HTML element to have access to everything on that 
+-element like value properties etc
+-get access to an element with all it's properties
+example: #element
+
+## <ng-content></ng-content>
+-so everything placed between opening and closing tag of your own component is deleted by angular (default)
+-<ng-content></ng-content> will allow you to reinsert that data
+-<ng-content></ng-content> serves a a hook for angular to insert the data
+-@ViewContent will allow you to access the referenced element inside this <ng-content></ng-content> 
+
+## Lifecycle hooks
+-ngOnChanges called after a bound input property changes like the ones decorated with @Input
+-ngOnInit called once the component is initialized (after the object was created). This will get run after the constructor
+-ngDoCheck called during every change detection run like event happening or timer fired or obeservable was resolved etc
+-ngAfterContentInit called after content (ng-content) has been projected into view
+-ngAfterContentChecked -called everytime the projected content has been checked
+-ngAfterViewInit called after the component's view (and child views) has been initialized
+-ngAfterViewChecked called everytime the vieew (and child views) have been checked
+-ngOnDestroy called once the component is about to be destroyed (for cleanup purposes)

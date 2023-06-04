@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
+  // selector: [cms-root] <div cms-root></div> => select by attribute or
+  // selector: '.cms-root' <div class='cms-root'></div> => select by class
   selector: 'cms-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

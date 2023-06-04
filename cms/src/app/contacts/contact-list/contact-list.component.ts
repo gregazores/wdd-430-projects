@@ -1,4 +1,5 @@
 import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Contact } from '../contact.model';
 
 // importing the contact.service
@@ -13,6 +14,11 @@ export class ContactListComponent implements OnInit {
   //initializing contacts with an empty array
   contacts: Contact[] = []
   //this is how to inject the ContactService
+
+
+  //see document for explanation
+  private subscription: Subscription;
+
   constructor( private contactService: ContactService ) {
     this.contacts = this.contactService.getContacts();
   }
@@ -37,9 +43,21 @@ export class ContactListComponent implements OnInit {
     // no longer need this because of routing scheme
     //this.contacts = this.contactService.getContacts();
 
-    this.contactService.contactChangedEvent.subscribe((contactArray: Contact[]) => {
-      this.contacts = contactArray;
-    });
+    // this.contactService.contactChangedEvent.subscribe((contactArray: Contact[]) => {
+    //   this.contacts = contactArray;
+    // });
+    //see document for explanation
+
+    //see document for explanation
+    this.subscription = this.contactService.contactListChangedEvent
+    .subscribe(
+      (contactsList: Contact[]) => {
+        this.contacts = contactsList;
+      }
+    );
+
+
+
   }
 
   //see documents list for explanation

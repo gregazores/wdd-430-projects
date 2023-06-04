@@ -1,4 +1,5 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Document } from '../document.model';
 import { DocumentService } from '../document.service';
 
@@ -7,9 +8,13 @@ import { DocumentService } from '../document.service';
   templateUrl: './document-list.component.html',
   styleUrls: ['./document-list.component.css']
 })
-export class DocumentListComponent implements OnInit {
+export class DocumentListComponent implements OnInit, OnDestroy {
   //see contact-list.component.ts for explanation
   documents: Document[] = []
+
+  //using subscription we will subscribe and unsubscribe to documentListChangedEvent Subject from document service
+  //define a class variable called subscription of the Subscription datatype
+  private subscription: Subscription;
 
   //see contact-list.component.ts for explanation
   constructor( private documentService: DocumentService ) {
@@ -45,9 +50,20 @@ export class DocumentListComponent implements OnInit {
     // to do this: subscribe to the documentChangedEvent emitter from document service
     //then assign the documents array passed into the function to the
     //documents property in the DocumentListComponent class.
-    this.documentService.documentChangedEvent.subscribe((documentsArray: Document[]) => {
-      this.documents = documentsArray;
-    });
+    // this.documentService.documentChangedEvent.subscribe((documentsArray: Document[]) => {
+    //   this.documents = documentsArray;
+    // });
+    //commenting out the above code since we will now subscribe to the documentListChangedEvent from document service class
+
+
+    // this time subscribe to the documentListChangedEvent object created in the DocumentService class
+    //Assign the Subscription object returned from the subscribe() function to the subscription class variable.
+    this.subscription = this.documentService.documentListChangedEvent
+    .subscribe(
+      (documentsList: Document[]) => {
+        this.documents = documentsList;
+      }
+    );
   }
 
   //We can eliminate most of this code by using routing.
@@ -61,5 +77,11 @@ export class DocumentListComponent implements OnInit {
   //   //since we have already injected the DocumentService class, we can now access the event emitter in there the documentSelectedEvent
   //   this.documentService.documentSelectedEvent.emit(documentEl);
   // }
+
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
 
 }

@@ -34,6 +34,7 @@
           <cms-contact-item
             *ngFor="let contactEl of contacts"
             [contact]="contactEl">
+            <!-- [contact] above refers to the contact property of ContactItemComponent coded like this: @Input() contact: Contact; -->
           </cms-contact-item>
 
         </div>

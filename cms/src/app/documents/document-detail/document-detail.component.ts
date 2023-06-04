@@ -39,7 +39,7 @@ export class DocumentDetailComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          console.log("params from document details", params)
+          //console.log("params from document details", params)
           this.id = params.id;
           this.document = this.documentService.getDocument(this.id);
         }
