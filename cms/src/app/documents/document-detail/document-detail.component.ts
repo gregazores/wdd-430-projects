@@ -10,10 +10,11 @@ import { DocumentService } from '../document.service';
   styleUrls: ['./document-detail.component.css']
 })
 export class DocumentDetailComponent implements OnInit {
-  //define our variables
+  //define our variable
   document: Document;
   nativeWindow: any;
   id: string;
+
 
 
   //inject a DocumentService, Router, and ActivatedRoute into the DocumentDetailComponent.
@@ -50,7 +51,6 @@ export class DocumentDetailComponent implements OnInit {
   // Inside the method, get the value of the url property of the Document object referenced in the document property.
   // Then, call the nativeWindow object’s open(url) method to open a new tab in the browser and link to the document’s URL property.
   onView() {
-    console.log("onView I was clicked")
     if (this.document.url) {
       this.nativeWindow.open(this.document.url);
     }

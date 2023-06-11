@@ -47,6 +47,7 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
   imports: [
     // BrowserModule gives us all the functionality to start our app
     BrowserModule,
+    //FormsModule let's you use template-driven forms
     FormsModule,
     AppRoutingModule
   ],
