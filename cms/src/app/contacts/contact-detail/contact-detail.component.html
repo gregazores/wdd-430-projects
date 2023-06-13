@@ -4,7 +4,7 @@
       <div class="clearfix panel-heading">
         <h2>{{ contact?.name }}</h2>
         <div class="pull-left">
-          <img class="img-responsive" alt="Rex Barzee" [src]="contact?.imageUrl" alt="{{ contact?.name }}" *ngIf="contact?.imageUrl">
+          <img class="img-responsive" alt="{{ contact?.name }}" [src]="contact?.imageUrl" alt="{{ contact?.name }}" *ngIf="contact?.imageUrl">
         </div>
 
         <div class="pull-right btn-toolbar">
@@ -13,15 +13,31 @@
         </div>
       </div>
 
-      <div class="panel-body">
-        <div class="list-group-item-heading">
+      <div class="panel-body" *ngIf="contact.email != ' ' && contact?.phone != ' '">
+        <div class="list-group-item-heading" *ngIf="contact.email != ' '">
           <p><strong>Email:</strong> {{ contact?.email }}</p>
         </div>
 
-        <div class="list-group-item-heading">
+        <div class="list-group-item-heading" *ngIf="contact?.phone != ' '">
           <p><strong>Phone:</strong>{{ contact?.phone }}</p>
         </div>
       </div>
+
+      <div *ngIf="contact?.group" class="clearfix panel-heading">
+        <h2>Group Contacts:</h2>
+        <div class="row" id="groupList" style="min-height: 3rem;" >
+
+          <div *ngFor="let contact of groupContacts; let i = index">
+            <div>
+              <cms-contact-item class="col-sm-11 contact-item" [contact]="contact"></cms-contact-item>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
 
     </div>
   </div>

@@ -17,9 +17,13 @@ import { MessageEditComponent } from './messages/message-edit/message-edit.compo
 import { MessageListComponent } from './messages/message-list/message-list.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
+import { DndModule } from 'ng2-dnd';
+import { MessageService } from './messages/message.service';
+import { DocumentService } from './documents/document.service';
+import { ContactService } from './contacts/contact.service';
 
 
 @NgModule({
@@ -49,9 +53,11 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
     BrowserModule,
     //FormsModule let's you use template-driven forms
     FormsModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    DndModule.forRoot()
   ],
-  providers: [],
+  providers: [MessageService, DocumentService, ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,7 @@ import { ContactService } from '../contact.service';
 })
 export class ContactDetailComponent implements OnInit {
   //define our variables
+  groupContacts: Contact[] = [];
   contact: Contact;
   id: string;
 
@@ -22,12 +23,21 @@ export class ContactDetailComponent implements OnInit {
   ) {   }
 
   ngOnInit() {
+
     this.route.params
       .subscribe(
         (params: Params) => {
-          console.log("params from document details", params)
+          //console.log("params from document details", params)
           this.id = params.id;
           this.contact = this.contactService.getContact(this.id);
+          console.log('contact-detail', this.contact)
+
+          // if the contact has a group then
+          if(this.contact.group) {
+            //groupContacts = clone the contact’s group
+            this.groupContacts = this.contact.group
+          }
+
         }
       );
   }

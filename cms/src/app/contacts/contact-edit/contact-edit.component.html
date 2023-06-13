@@ -87,33 +87,47 @@
           Document URL fields do not have a valid value.
         -->
         <div class="col-sm-12">
-          <div class="danger alert-danger alert-message" *ngIf="!name.valid && name.touched OR !email.valid && email.touched">The Name and Email fields are required.</div></div>
+          <div class="danger alert-danger alert-message" *ngIf="!name.valid && name.touched || !email.valid && email.touched">The Name and Email fields are required.
+          </div>
+        </div>
       </div>
 
-      <!-- <div class="row">
-        <div class="form-group">
-          <label for="groupList">Group Contacts:</label>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="groupList">Group Contacts:</label>
 
-          <div class="row" id="groupList"
-              style="min-height: 3rem;" >
-
-            <div *ngFor="let contact of groupContacts; let i = index">
-              <div>
-                <cms-contact-item class="col-sm-11" [contact]="contact"></cms-contact-item>
-                <button class="btn btn-danger col-sm-2 deleteButton" (click)="onRemoveItem(i)">X</button>
-              </div>
+            <div class="danger alert-danger alert-message" *ngIf="invalidContactAdded">Contact cannot be added to the group. It is already in a groupor it is the current contact.
             </div>
-            <span class="dragMsg" *ngIf="groupContacts?.length < 1">Drag contacts in group here</span>
-          </div>
 
+            <!-- define the drop zone
+              Add the dnd-droppable directive to indicate that this element will receive draggable items
+              Add the [dropZones] directive and assign a name.
+              The [dropZones] directive requires that you assign an array of names to it. We only defined the contactGroup name in the array.
+              Add the (onDropSuccess) directive to specify the method that will be called when a contact is dragged into this drop zone.
+             -->
+            <div class="row" id="groupList"
+                style="min-height: 5rem;"
+                dnd-droppable [dropZones]="['contactGroup']" (onDropSuccess)="addToGroup($event)">
+
+              <div *ngFor="let contact of groupContacts; let i = index">
+                <div>
+                  <cms-contact-item class="col-sm-11 contact-item" [contact]="contact"></cms-contact-item>
+                  <button class="btn btn-danger col-sm-2 deleteButton" (click)="onRemoveItem(i)">X</button>
+                </div>
+              </div>
+              <span class="dragMsg" *ngIf="groupContacts?.length < 1">Drag contacts in group here</span>
+            </div>
+
+          </div>
         </div>
-      </div> -->
+      </div>
 
 
       <div class="row">
         <div class="col-xs-12 btn-toolbar">
           <button [disabled]="!f.valid" class="btn btn-success" type="submit">Save</button>
-          <!-- <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button> -->
+          <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
         </div>
       </div>
 

@@ -31,9 +31,21 @@
             (click)="onSelected(contactEl)">
           </cms-contact-item> -->
 
+
+          <!-- All of the <cms-contact-item> elements in the ContactListComponent need to be identified as draggable.
+            Add the dnd-draggable directive to indicate that this element is draggable
+            Add the [dragEnabled] directive to indicate when the element is draggable. The element is draggable when the value of this directive is true. It is not draggable when its value is false.
+
+            Add the [dragData] directive to indicate what data is to be associated with the element when it is dragged. assign the value of the contact property in the ContactItemComponent to the [dragData] directive
+          -->
           <cms-contact-item
             *ngFor="let contactEl of contacts"
-            [contact]="contactEl">
+            [contact]="contactEl"
+            dnd-draggable
+            [dragEnabled]="!contactEl.group"
+            [dragData]="contactEl"
+            [dropZones]="['contactGroup']"
+            >
             <!-- [contact] above refers to the contact property of ContactItemComponent coded like this: @Input() contact: Contact; -->
           </cms-contact-item>
 
