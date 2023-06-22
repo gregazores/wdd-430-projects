@@ -18,7 +18,11 @@ export class DocumentListComponent implements OnInit, OnDestroy {
 
   //see contact-list.component.ts for explanation
   constructor( private documentService: DocumentService ) {
-    this.documents = this.documentService.getDocuments();
+    //this.documents = this.documentService.getDocuments();
+    //this time we will no longer expect getDocuments() to return something
+    // instead, we will this method will trigger documentListChangedEvent that would update us of any
+    //updates in the document
+    this.documentService.getDocuments();
    }
 
     // We are outputting a new EventEmitter with type contact to be listened from Parent Component

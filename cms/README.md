@@ -44,6 +44,13 @@ ng g c folder/name --skipTests true
 ## creating a project with prefix
 ng new name --prefix=name --no-strict
 
+## Pushing to git-repo
+git init  --although angular will initialize the app upon creation
+git commit -m "first commit" --and also commit everything
+git branch -M main 
+git remote add origin https://github.com/gregazores/wdd-430-nextperience.git
+git push -u origin main
+
 ## creating a service
 ng g s
 

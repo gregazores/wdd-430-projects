@@ -24,6 +24,8 @@ import { DndModule } from 'ng2-dnd';
 import { MessageService } from './messages/message.service';
 import { DocumentService } from './documents/document.service';
 import { ContactService } from './contacts/contact.service';
+import { ContactsFilterPipe } from './contacts/contacts-filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { ContactService } from './contacts/contact.service';
     MessageListComponent,
     DropdownDirective,
     DocumentEditComponent,
-    ContactEditComponent
+    ContactEditComponent,
+    ContactsFilterPipe
   ],
   // imports is for adding modules
   imports: [
@@ -54,6 +57,7 @@ import { ContactService } from './contacts/contact.service';
     //FormsModule let's you use template-driven forms
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     DndModule.forRoot()
   ],

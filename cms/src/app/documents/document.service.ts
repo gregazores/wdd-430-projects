@@ -2,9 +2,10 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Document } from './document.model';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DocumentService {
   //moving the event emitter from DocumentListComponent class to here
@@ -20,6 +21,8 @@ export class DocumentService {
 
   //Create a new class variable called maxDocumentId of the number data type
   maxDocumentId: number;
+  //this is the API endpoint that we should use so that we can connect to firebase
+  documentUrl: string = 'https://wdd-430-project-data-default-rtdb.asia-southeast1.firebasedatabase.app/documents.json';
 
   //this will emit an event whenever a document is deleted from document detail's delete button
   //and pass an array of documents of Document type
@@ -28,8 +31,10 @@ export class DocumentService {
 
   documents: Document [] = [];
 
-  constructor() {
-    this.documents = MOCKDOCUMENTS;
+  //Inject the HttpClient object into the DocumentService class through dependency injection.
+  constructor(private http: HttpClient) {
+    //commenting this out since we will use data from firebase
+    //this.documents = MOCKDOCUMENTS;
 
     //Inside the constructor() method of the DocumentService class call the
     //getMaxId() function and assign the value returned to the maxDocumentId class variable.
@@ -37,9 +42,26 @@ export class DocumentService {
     //this.addDocument(null)
   }
 
-  getDocuments(): Document[] {
+
+  getDocuments() {
+  //instead of returning array of documents, this method will now emit the documentListChangedEvent subject and pass it a cloned copy of the documents array to notify the
+  //getDocuments(): Document[] {
+    //this time we will use http requests
     //see contact.service.ts for explanation
-    return this.documents.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0).slice();
+    //return this.documents.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0).slice();
+
+    this.http.get<Document[]>(this.documentUrl).subscribe(
+        // success method
+        (documents: Document[] ) => {
+          this.documents = documents
+          this.maxDocumentId = this.getMaxId()
+          //sort the list of documents
+          this.documents.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
+          //emit the next document list change event
+          this.documentListChangedEvent.next(this.documents.slice());
+        }
+
+    )
   }
 
   getDocument(id: string): Document {
@@ -65,7 +87,10 @@ export class DocumentService {
     this.documents.splice(pos, 1);
     //we will need to change this to function with the newly created Subject observable
     //this.documentChangedEvent.emit(this.documents.slice());
-    this.documentListChangedEvent.next(this.documents.slice());
+   //since we are manipulating data from firebase, we will move this event emitter
+   //to a new method called storeDocuments
+   //this.documentListChangedEvent.next(this.documents.slice())
+   this.storeDocuments(this.documents.slice())
  }
 
   //getMaxId(): Number with this config function is expected to return a value of type Number
@@ -105,8 +130,10 @@ export class DocumentService {
    //push newDocument onto the documents list
    this.documents.push(newDocument)
    //documentsListClone = documents.slice()
-   //const documentsListClone = this.documents.slice()
-   this.documentListChangedEvent.next(this.documents.slice())
+   //since we are manipulating data from firebase, we will move this event emitter
+   //to a new method called storeDocuments
+   //this.documentListChangedEvent.next(this.documents.slice())
+   this.storeDocuments(this.documents.slice())
  }
 
  updateDocument(originalDocument: Document, newDocument: Document) {
@@ -122,8 +149,34 @@ export class DocumentService {
    newDocument.id = originalDocument.id;
    this.documents[pos] = newDocument;
    //const documentsListClone = this.documents.slice()
-   this.documentListChangedEvent.next(this.documents.slice())
+   //since we are manipulating data from firebase, we will move this event emitter
+   //to a new method called storeDocuments
+   //this.documentListChangedEvent.next(this.documents.slice())
+   this.storeDocuments(this.documents.slice())
 
+ }
+
+ //This method will be called when a Document object is added, updated, or deleted in the document list.
+ //It will issue an HTTP Put request to update the document list in your Firebase database server.
+ storeDocuments(documentsToStore: Document[])  {
+
+  //Create a new HttpHeaders object that sets the Content-Type of the HTTP request to application/json.
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
+  this.http.put(
+    this.documentUrl,
+    //Convert the documents array into a string format by calling the JSON.stringify()
+    JSON.stringify(documentsToStore),
+    httpOptions
+  ).subscribe(
+    (response) => {
+      console.log(response)
+      this.documentListChangedEvent.next(this.documents.slice())
+    }
+  )
  }
 
 

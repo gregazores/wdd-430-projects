@@ -24,14 +24,16 @@ export class MessageListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.messages = this.messageService.getMessages();
+    //see documents counterpart for explanation
+    //this.messages = this.messageService.getMessages();
+    this.messageService.getMessages();
 
     //we need to subscribe to an event in MessageService namely messageChangedEvent so that when that event
     //is triggered we can run a function where we get that array of messages from messageChangedEvent and
     //store in in the messages array here to be reloaded
     this.messageService.messageChangedEvent.subscribe((messagesFromChangedEvent: Message[]) => {
       this.messages = messagesFromChangedEvent;
-      console.log("new messages", this.messages)
+      //console.log("new messages", this.messages)
     });
   }
 

@@ -13,6 +13,7 @@ import { ContactService } from '../contact.service';
 export class ContactListComponent implements OnInit {
   //initializing contacts with an empty array
   contacts: Contact[] = []
+  term: string;
   //this is how to inject the ContactService
 
 
@@ -20,7 +21,9 @@ export class ContactListComponent implements OnInit {
   private subscription: Subscription;
 
   constructor( private contactService: ContactService ) {
-    this.contacts = this.contactService.getContacts();
+    //see documents counterpart for explanation
+    //this.contacts = this.contactService.getContacts();
+    this.contactService.getContacts();
   }
 
   // We are outputting a new EventEmitter with type contact to be listened from Parent Component
@@ -70,6 +73,13 @@ export class ContactListComponent implements OnInit {
   //   //using the contactSelectedEvent from contactService, we will emit an event and passt contactEl
   //   this.contactService.contactSelectedEvent.emit(contactEl);
   //}
+
+
+  search(value: string) {
+    //console.log('search value', value)
+  this.term = value;
+
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
