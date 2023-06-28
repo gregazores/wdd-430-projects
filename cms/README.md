@@ -72,7 +72,7 @@ example: #element
 -so everything placed between opening and closing tag of your own component is deleted by angular (default)
 -<ng-content></ng-content> will allow you to reinsert that data
 -<ng-content></ng-content> serves a a hook for angular to insert the data
--@ViewContent will allow you to access the referenced element inside this <ng-content></ng-content> 
+-@ViewContent or was it @ContentChild will allow you to access the referenced element inside this <ng-content></ng-content> 
 
 ## Lifecycle hooks
 -ngOnChanges called after a bound input property changes like the ones decorated with @Input

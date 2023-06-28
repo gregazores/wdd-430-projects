@@ -14,6 +14,7 @@ export class DocumentListComponent implements OnInit, OnDestroy {
 
   //using subscription we will subscribe and unsubscribe to documentListChangedEvent Subject from document service
   //define a class variable called subscription of the Subscription datatype
+  //here we  will store subscription created on ngOnInit()
   private subscription: Subscription;
 
   //see contact-list.component.ts for explanation

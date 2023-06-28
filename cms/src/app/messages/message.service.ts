@@ -3,6 +3,10 @@ import { Message } from './message.model';
 import { MOCKMESSAGES } from './MOCKMESSAGES';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+//useful when you want to inject other services to this service
+//will keep this @Injectable for now for reference
+//but for newer versions of angular it is advisable to put @Ijectable
+//UPDATE: For Angular 6+ instead of adding a service class to the providers[] array in AppModule , you can set the following config below.
 @Injectable({
   providedIn: 'root'
 })
@@ -46,6 +50,8 @@ export class MessageService {
 
         //emit the next document list change event
         this.messageChangedEvent.emit(this.messages.slice());
+      }, error => {
+        console.log(error)
       }
 
   )

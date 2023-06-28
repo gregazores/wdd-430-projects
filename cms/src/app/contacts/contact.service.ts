@@ -4,6 +4,9 @@ import { Contact } from './contact.model';
 import { MOCKCONTACTS } from './MOCKCONTACTS';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+//useful when you want to inject other services to this service
+//will keep this @Injectable for now for reference
+//but for newer versions of angular it is advisable to put @Ijectable
 @Injectable({
   providedIn: 'root',
 })
@@ -66,6 +69,8 @@ export class ContactService {
         this.contacts.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0).slice();
         //emit the next document list change event
         this.contactListChangedEvent.next(this.contacts.slice());
+      }, error => {
+        console.log(error)
       }
 
   )

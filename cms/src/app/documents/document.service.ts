@@ -4,6 +4,10 @@ import { Document } from './document.model';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+//useful when you want to inject other services to this service
+//will keep this @Injectable for now for reference
+//but for newer versions of angular it is advisable to put @Injectable
+//UPDATE: For Angular 6+ instead of adding a service class to the providers[] array in AppModule , you can set the following config below.
 @Injectable({
   providedIn: 'root',
 })
@@ -59,6 +63,8 @@ export class DocumentService {
           this.documents.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
           //emit the next document list change event
           this.documentListChangedEvent.next(this.documents.slice());
+        }, error => {
+          console.log(error)
         }
 
     )

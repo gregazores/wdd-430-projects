@@ -45,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     MessageItemComponent,
     MessageEditComponent,
     MessageListComponent,
+    //this is the custom directive that we have created
     DropdownDirective,
     DocumentEditComponent,
     ContactEditComponent,
@@ -61,6 +62,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     DndModule.forRoot()
   ],
+  //we are providing the services here to ensure that THE SAME instance of the service
+  //would be available sitewide
   providers: [MessageService, DocumentService, ContactService],
   bootstrap: [AppComponent]
 })

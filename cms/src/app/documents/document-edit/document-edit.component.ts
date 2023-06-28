@@ -44,6 +44,7 @@ export class DocumentEditComponent implements OnInit {
     // );
 
     //algorithm subscribes to the currently active route to get the value of the id parameter in the router’s parameter list.
+    //params of the route is actually an observable which reacts or waits or gets triggered whenever parameter of the current loaded or route gets change or loaded or activated
     this.route.params.subscribe(
       (params: Params) => {
         this.id = params.id;
