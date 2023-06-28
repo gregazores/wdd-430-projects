@@ -10,9 +10,9 @@ var logger = require('morgan');
 var index = require('./server/routes/app');
 
 //let us create routing files for messages contacts and documents
-const messageRoutes = require('.server/routes/messages');
-const contactRoutes = require('.server/routes/contacts');
-const documentsRoutes = require('.server/routes/documents');
+const messageRoutes = require('./server/routes/messages');
+const contactRoutes = require('./server/routes/contacts');
+const documentsRoutes = require('./server/routes/documents');
 
 // ... ADD CODE TO IMPORT YOUR ROUTING FILES HERE ...
 
