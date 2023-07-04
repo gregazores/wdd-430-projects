@@ -26,7 +26,11 @@ export class DocumentService {
   //Create a new class variable called maxDocumentId of the number data type
   maxDocumentId: number;
   //this is the API endpoint that we should use so that we can connect to firebase
-  documentUrl: string = 'https://wdd-430-project-data-default-rtdb.asia-southeast1.firebasedatabase.app/documents.json';
+  //documentUrl: string = 'https://wdd-430-project-data-default-rtdb.asia-southeast1.firebasedatabase.app/documents.json';
+
+
+  //this is the API endpoint that we should use so that we can connect to my rest api
+  documentUrl: string = 'http://localhost:3000/documents';
 
   //this will emit an event whenever a document is deleted from document detail's delete button
   //and pass an array of documents of Document type
@@ -129,17 +133,37 @@ export class DocumentService {
     return;
    }
 
-   //this.maxDocumentId++
-   this.maxDocumentId++;
-   //newDocument.id = this.maxDocumentId
-   newDocument.id = String(this.maxDocumentId);
-   //push newDocument onto the documents list
-   this.documents.push(newDocument)
-   //documentsListClone = documents.slice()
-   //since we are manipulating data from firebase, we will move this event emitter
-   //to a new method called storeDocuments
-   //this.documentListChangedEvent.next(this.documents.slice())
-   this.storeDocuments(this.documents.slice())
+
+  //  //method below is for firebase data
+  //  //this.maxDocumentId++
+  //  this.maxDocumentId++;
+  //  //newDocument.id = this.maxDocumentId
+  //  newDocument.id = String(this.maxDocumentId);
+  //  //push newDocument onto the documents list
+  //  this.documents.push(newDocument)
+  //  //documentsListClone = documents.slice()
+  //  //since we are manipulating data from firebase, we will move this event emitter
+  //  //to a new method called storeDocuments
+  //  //this.documentListChangedEvent.next(this.documents.slice())
+  //  this.storeDocuments(this.documents.slice())
+
+
+   //method below is for the new rest API
+   // make sure id of the new Document is empty
+   newDocument.id = '';
+   const headers = new HttpHeaders({'Content-Type': 'application/json'});
+   // add to database
+   this.http.post<{ message: string, document: Document }>(this.documentUrl,
+   newDocument,  { headers: headers }).subscribe(
+    (responseData) => {
+      // add new document to documents
+      this.documents.push(responseData.document);
+      console.log('this.documents', this.documents)
+      console.log('responseData.document', responseData.document)
+      //this.sortAndSend();
+    }
+  );
+
  }
 
  updateDocument(originalDocument: Document, newDocument: Document) {

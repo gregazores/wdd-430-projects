@@ -7,7 +7,7 @@ router.get('/', async (req, res, next) => {
   //console.log('Hello from GET router contacts')
   try {
     //call the Contact model find() method to get all contact in the collection
-    const contacts = await Contact.find()
+    const contacts = await Contact.find().populate('group')
     //return response status 200 and a JSON object containing the list of contact
     res.status(200).json(contacts)
   } catch (error) {
